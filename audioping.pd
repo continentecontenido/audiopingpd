@@ -1,0 +1,29 @@
+#N canvas 380 170 708 549 10;
+#X obj 70 177 shell;
+#X obj 187 256 s2l =;
+#X obj 70 212 unpack f s s s s s s;
+#X obj 187 294 unpack s f;
+#X obj 244 378 osc~;
+#X obj 243 418 dac~;
+#X text -187 138 Pidale al sistema que haga pings a una ip.;
+#X text -258 211 Lea la salida del comando ping y agarre el tiempo
+de latencia;
+#X text -65 335 Genere un sonido a partir del tiempo de latencia;
+#X obj -266 6 cnv 15 1 1 empty empty AUDIOPING_v0.1 20 12 0 30 -233017
+-66577 0;
+#X text -247 31 Copyleft 2012 Rafael Vega <rvega@elsoftwarehamuerto.org>
+Federico López <f@jardincosmico.net>;
+#X obj 303 337 print Latencia;
+#X msg 70 140 ping -s 1400 192.168.1.65;
+#X obj 244 338 * 30;
+#X msg 247 141 ping -s 1400 127.0.0.1;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 6 1 0;
+#X connect 3 1 11 0;
+#X connect 3 1 13 0;
+#X connect 4 0 5 0;
+#X connect 4 0 5 1;
+#X connect 12 0 0 0;
+#X connect 13 0 4 0;
+#X connect 14 0 0 0;
